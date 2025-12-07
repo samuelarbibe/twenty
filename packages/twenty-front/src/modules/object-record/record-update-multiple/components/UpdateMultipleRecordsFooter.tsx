@@ -64,7 +64,7 @@ export const UpdateMultipleRecordsFooter = ({
           onClick={onCancel}
         />
         <Button
-          title={t`Update${progressText}`}
+          title={progressText ? t`Updating ${progressText}` : t`Update`}
           variant="primary"
           accent="blue"
           size="medium"

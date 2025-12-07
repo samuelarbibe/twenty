@@ -1758,6 +1758,7 @@ msgstr "Et voi skannata? Kopioi"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/provider/components/SpreadsheetImport.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/action-menu/actions/record-actions/constants/DashboardActionsConfig.tsx
 msgid "Cancel"
 msgstr "Peruuta"
@@ -8327,6 +8328,11 @@ msgstr "Valitse tapahtumat, jotka aktivoivat toiminnon"
 msgid "Select the events you wish to send to this endpoint"
 msgstr "Valitse tapahtumat, jotka haluat lähettää tähän päätepisteeseen"
 
+#. js-lingui-id: 4FetIR
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsChooseFieldsStep.tsx
+msgid "Select the fields you want to update for the selected records."
+msgstr "Valitse kentät, jotka haluat päivittää valituille tietueille."
+
 #. js-lingui-id: +xn1pe
 #: src/modules/spreadsheet-import/steps/components/SelectSheetStep/SelectSheetStep.tsx
 msgid "Select the sheet to use"
@@ -8894,6 +8900,11 @@ msgstr ""
 #: src/modules/object-record/record-merge/hooks/useMergeRecordsActions.ts
 msgid "Successfully merged {recordCount} records"
 msgstr "{recordCount, plural, one {Onnistuneesti yhdistetty {recordCount} tietue} other {Onnistuneesti yhdistetty {recordCount} tietuetta}}"
+
+#. js-lingui-id: zsDoFr
+#: src/modules/object-record/record-update-multiple/hooks/useUpdateMultipleRecordsActions.ts
+msgid "Successfully updated {count} records"
+msgstr "Päivitettiin onnistuneesti {count} tietuetta"
 
 #. js-lingui-id: QJz8/3
 #: src/modules/command-menu/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
@@ -9725,10 +9736,18 @@ msgstr "päivitä"
 
 #. js-lingui-id: EkH9pt
 #: src/modules/settings/integrations/components/SettingsIntegrationRemoteTableSchemaUpdate.tsx
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/information-banner/components/billing/InformationBannerFailPaymentInfo.tsx
 #: src/modules/information-banner/components/billing/InformationBannerBillingSubscriptionPaused.tsx
+#: src/modules/action-menu/actions/record-actions/constants/DefaultRecordActionsConfig.tsx
 msgid "Update"
 msgstr "Päivitä"
+
+#. js-lingui-id: 0KAL3W
+#: src/modules/command-menu/hooks/useOpenUpdateMultipleRecordsPageInCommandMenu.tsx
+#: src/modules/action-menu/actions/record-actions/constants/DefaultRecordActionsConfig.tsx
+msgid "Update records"
+msgstr "Päivitä tietueet"
 
 #. js-lingui-id: 5bRMKt
 #: src/modules/settings/members/components/MemberPermissionsTab.tsx
@@ -9744,6 +9763,11 @@ msgstr "Päivitä näkymä"
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "Update your account's configuration. Configure any combination of IMAP, SMTP, and CalDAV as needed."
 msgstr "Päivitä tilisi kokoonpano. Määritä tarvittaessa mikä tahansa yhdistelmä IMAP-, SMTP- ja CalDAV-asetuksista."
+
+#. js-lingui-id: jHthMK
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
+msgid "Updating {progressText}"
+msgstr "Päivitetään {progressText}"
 
 #. js-lingui-id: kwkhPe
 #: src/modules/billing/components/internal/MeteredPriceSelector.tsx

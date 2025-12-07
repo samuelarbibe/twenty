@@ -1758,6 +1758,7 @@ msgstr "Не можете да скенирате? Копирајте"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/provider/components/SpreadsheetImport.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/action-menu/actions/record-actions/constants/DashboardActionsConfig.tsx
 msgid "Cancel"
 msgstr "Откажи"
@@ -8327,6 +8328,11 @@ msgstr "Изаберите догађаје који би требало да а
 msgid "Select the events you wish to send to this endpoint"
 msgstr "Изаберите догађаје које желите да пошаљете на овај крај"
 
+#. js-lingui-id: 4FetIR
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsChooseFieldsStep.tsx
+msgid "Select the fields you want to update for the selected records."
+msgstr "Изаберите поља која желите да ажурирате за изабране записе."
+
 #. js-lingui-id: +xn1pe
 #: src/modules/spreadsheet-import/steps/components/SelectSheetStep/SelectSheetStep.tsx
 msgid "Select the sheet to use"
@@ -8894,6 +8900,11 @@ msgstr ""
 #: src/modules/object-record/record-merge/hooks/useMergeRecordsActions.ts
 msgid "Successfully merged {recordCount} records"
 msgstr "Успешно спојено {recordCount} записа"
+
+#. js-lingui-id: zsDoFr
+#: src/modules/object-record/record-update-multiple/hooks/useUpdateMultipleRecordsActions.ts
+msgid "Successfully updated {count} records"
+msgstr "Успешно ажурирано {count} записа"
 
 #. js-lingui-id: QJz8/3
 #: src/modules/command-menu/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
@@ -9725,10 +9736,18 @@ msgstr "ажурирај"
 
 #. js-lingui-id: EkH9pt
 #: src/modules/settings/integrations/components/SettingsIntegrationRemoteTableSchemaUpdate.tsx
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/information-banner/components/billing/InformationBannerFailPaymentInfo.tsx
 #: src/modules/information-banner/components/billing/InformationBannerBillingSubscriptionPaused.tsx
+#: src/modules/action-menu/actions/record-actions/constants/DefaultRecordActionsConfig.tsx
 msgid "Update"
 msgstr "Ажурирати"
+
+#. js-lingui-id: 0KAL3W
+#: src/modules/command-menu/hooks/useOpenUpdateMultipleRecordsPageInCommandMenu.tsx
+#: src/modules/action-menu/actions/record-actions/constants/DefaultRecordActionsConfig.tsx
+msgid "Update records"
+msgstr "Ажурирај записе"
 
 #. js-lingui-id: 5bRMKt
 #: src/modules/settings/members/components/MemberPermissionsTab.tsx
@@ -9744,6 +9763,11 @@ msgstr "Ажурирајте приказ"
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "Update your account's configuration. Configure any combination of IMAP, SMTP, and CalDAV as needed."
 msgstr "Ажурирајте конфигурацију вашег налога. Подесите било коју комбинацију IMAP, SMTP и CalDAV по потреби."
+
+#. js-lingui-id: jHthMK
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
+msgid "Updating {progressText}"
+msgstr "Ажурирање {progressText}"
 
 #. js-lingui-id: kwkhPe
 #: src/modules/billing/components/internal/MeteredPriceSelector.tsx

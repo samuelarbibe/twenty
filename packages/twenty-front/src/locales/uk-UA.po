@@ -1758,6 +1758,7 @@ msgstr "Не можете сканувати? Скопіюйте"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/provider/components/SpreadsheetImport.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/action-menu/actions/record-actions/constants/DashboardActionsConfig.tsx
 msgid "Cancel"
 msgstr "Скасувати"
@@ -8327,6 +8328,11 @@ msgstr "Виберіть події, які повинні запускати ф
 msgid "Select the events you wish to send to this endpoint"
 msgstr "Оберіть події, які хочете надіслати до цього кінцевого пункту"
 
+#. js-lingui-id: 4FetIR
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsChooseFieldsStep.tsx
+msgid "Select the fields you want to update for the selected records."
+msgstr "Виберіть поля, які ви хочете оновити для вибраних записів."
+
 #. js-lingui-id: +xn1pe
 #: src/modules/spreadsheet-import/steps/components/SelectSheetStep/SelectSheetStep.tsx
 msgid "Select the sheet to use"
@@ -8894,6 +8900,11 @@ msgstr ""
 #: src/modules/object-record/record-merge/hooks/useMergeRecordsActions.ts
 msgid "Successfully merged {recordCount} records"
 msgstr "Успішно об'єднано {recordCount, plural, one {# запис} few {# записи} many {# записів} other {# запису}}"
+
+#. js-lingui-id: zsDoFr
+#: src/modules/object-record/record-update-multiple/hooks/useUpdateMultipleRecordsActions.ts
+msgid "Successfully updated {count} records"
+msgstr "Успішно оновлено {count} записів"
 
 #. js-lingui-id: QJz8/3
 #: src/modules/command-menu/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
@@ -9727,10 +9738,18 @@ msgstr "оновити"
 
 #. js-lingui-id: EkH9pt
 #: src/modules/settings/integrations/components/SettingsIntegrationRemoteTableSchemaUpdate.tsx
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/information-banner/components/billing/InformationBannerFailPaymentInfo.tsx
 #: src/modules/information-banner/components/billing/InformationBannerBillingSubscriptionPaused.tsx
+#: src/modules/action-menu/actions/record-actions/constants/DefaultRecordActionsConfig.tsx
 msgid "Update"
 msgstr "Оновити"
+
+#. js-lingui-id: 0KAL3W
+#: src/modules/command-menu/hooks/useOpenUpdateMultipleRecordsPageInCommandMenu.tsx
+#: src/modules/action-menu/actions/record-actions/constants/DefaultRecordActionsConfig.tsx
+msgid "Update records"
+msgstr "Оновити записи"
 
 #. js-lingui-id: 5bRMKt
 #: src/modules/settings/members/components/MemberPermissionsTab.tsx
@@ -9746,6 +9765,11 @@ msgstr "Оновити вигляд"
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "Update your account's configuration. Configure any combination of IMAP, SMTP, and CalDAV as needed."
 msgstr "Оновіть конфігурацію вашого облікового запису. Налаштуйте будь-яку комбінацію IMAP, SMTP та CalDAV за потреби."
+
+#. js-lingui-id: jHthMK
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
+msgid "Updating {progressText}"
+msgstr "Оновлення {progressText}"
 
 #. js-lingui-id: kwkhPe
 #: src/modules/billing/components/internal/MeteredPriceSelector.tsx

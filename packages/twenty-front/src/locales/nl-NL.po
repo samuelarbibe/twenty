@@ -1758,6 +1758,7 @@ msgstr "Kan je niet scannen? Kopieer de"
 #: src/modules/spreadsheet-import/steps/components/MatchColumnsStep/MatchColumnsStep.tsx
 #: src/modules/spreadsheet-import/provider/components/SpreadsheetImport.tsx
 #: src/modules/settings/components/SaveAndCancelButtons/CancelButton.tsx
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/action-menu/actions/record-actions/constants/DashboardActionsConfig.tsx
 msgid "Cancel"
 msgstr "Annuleren"
@@ -8327,6 +8328,11 @@ msgstr "Selecteer de gebeurtenissen die de functie moeten activeren"
 msgid "Select the events you wish to send to this endpoint"
 msgstr "Selecteer de gebeurtenissen die je naar dit eindpunt wilt sturen"
 
+#. js-lingui-id: 4FetIR
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsChooseFieldsStep.tsx
+msgid "Select the fields you want to update for the selected records."
+msgstr "Selecteer de velden die u wilt bijwerken voor de geselecteerde records."
+
 #. js-lingui-id: +xn1pe
 #: src/modules/spreadsheet-import/steps/components/SelectSheetStep/SelectSheetStep.tsx
 msgid "Select the sheet to use"
@@ -8894,6 +8900,11 @@ msgstr ""
 #: src/modules/object-record/record-merge/hooks/useMergeRecordsActions.ts
 msgid "Successfully merged {recordCount} records"
 msgstr "Succesvol {recordCount} records samengevoegd"
+
+#. js-lingui-id: zsDoFr
+#: src/modules/object-record/record-update-multiple/hooks/useUpdateMultipleRecordsActions.ts
+msgid "Successfully updated {count} records"
+msgstr "{count} records succesvol bijgewerkt"
 
 #. js-lingui-id: QJz8/3
 #: src/modules/command-menu/pages/page-layout/constants/settings/ChartConfigurationSettingLabels.ts
@@ -9727,10 +9738,18 @@ msgstr "bijwerken"
 
 #. js-lingui-id: EkH9pt
 #: src/modules/settings/integrations/components/SettingsIntegrationRemoteTableSchemaUpdate.tsx
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
 #: src/modules/information-banner/components/billing/InformationBannerFailPaymentInfo.tsx
 #: src/modules/information-banner/components/billing/InformationBannerBillingSubscriptionPaused.tsx
+#: src/modules/action-menu/actions/record-actions/constants/DefaultRecordActionsConfig.tsx
 msgid "Update"
 msgstr "Bijwerken"
+
+#. js-lingui-id: 0KAL3W
+#: src/modules/command-menu/hooks/useOpenUpdateMultipleRecordsPageInCommandMenu.tsx
+#: src/modules/action-menu/actions/record-actions/constants/DefaultRecordActionsConfig.tsx
+msgid "Update records"
+msgstr "Records bijwerken"
 
 #. js-lingui-id: 5bRMKt
 #: src/modules/settings/members/components/MemberPermissionsTab.tsx
@@ -9746,6 +9765,11 @@ msgstr "Weergave Bijwerken"
 #: src/modules/settings/accounts/components/SettingsAccountsConnectionForm.tsx
 msgid "Update your account's configuration. Configure any combination of IMAP, SMTP, and CalDAV as needed."
 msgstr "Werk uw accountconfiguratie bij. Configureer naar behoefte een combinatie van IMAP, SMTP en CalDAV."
+
+#. js-lingui-id: jHthMK
+#: src/modules/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter.tsx
+msgid "Updating {progressText}"
+msgstr "{progressText} bijwerken"
 
 #. js-lingui-id: kwkhPe
 #: src/modules/billing/components/internal/MeteredPriceSelector.tsx

@@ -1,13 +1,6 @@
-import { contextStoreAnyFieldFilterValueComponentState } from '@/context-store/states/contextStoreAnyFieldFilterValueComponentState';
-import { contextStoreFilterGroupsComponentState } from '@/context-store/states/contextStoreFilterGroupsComponentState';
-import { contextStoreFiltersComponentState } from '@/context-store/states/contextStoreFiltersComponentState';
-import { contextStoreTargetedRecordsRuleComponentState } from '@/context-store/states/contextStoreTargetedRecordsRuleComponentState';
-import { computeContextStoreFilters } from '@/context-store/utils/computeContextStoreFilters';
+import { useContextStoreFilter } from '@/context-store/hooks/useContextStoreFilter';
 import { useIncrementalUpdateManyRecords } from '@/object-record/hooks/useIncrementalUpdateManyRecords';
-import { useFilterValueDependencies } from '@/object-record/record-filter/hooks/useFilterValueDependencies';
-import { useRecordIndexIdFromCurrentContextStore } from '@/object-record/record-index/hooks/useRecordIndexIdFromCurrentContextStore';
 import { useSnackBar } from '@/ui/feedback/snack-bar-manager/hooks/useSnackBar';
-import { useRecoilComponentValue } from '@/ui/utilities/state/component-state/hooks/useRecoilComponentValue';
 import { useLingui } from '@lingui/react/macro';
 
 type UseUpdateMultipleRecordsActionsProps = {
@@ -22,38 +15,7 @@ export const useUpdateMultipleRecordsActions = ({
   const { t } = useLingui();
   const { enqueueSuccessSnackBar, enqueueErrorSnackBar } = useSnackBar();
 
-  const { objectMetadataItem } = useRecordIndexIdFromCurrentContextStore();
-
-  const contextStoreTargetedRecordsRule = useRecoilComponentValue(
-    contextStoreTargetedRecordsRuleComponentState,
-    contextStoreInstanceId,
-  );
-
-  const contextStoreFilters = useRecoilComponentValue(
-    contextStoreFiltersComponentState,
-    contextStoreInstanceId,
-  );
-
-  const contextStoreFilterGroups = useRecoilComponentValue(
-    contextStoreFilterGroupsComponentState,
-    contextStoreInstanceId,
-  );
-
-  const contextStoreAnyFieldFilterValue = useRecoilComponentValue(
-    contextStoreAnyFieldFilterValueComponentState,
-    contextStoreInstanceId,
-  );
-
-  const { filterValueDependencies } = useFilterValueDependencies();
-
-  const graphqlFilter = computeContextStoreFilters({
-    contextStoreTargetedRecordsRule,
-    contextStoreFilters,
-    contextStoreFilterGroups,
-    objectMetadataItem,
-    filterValueDependencies,
-    contextStoreAnyFieldFilterValue,
-  });
+  const { graphqlFilter } = useContextStoreFilter({ contextStoreInstanceId });
 
   const {
     incrementalUpdateManyRecords,

@@ -1,11 +1,14 @@
 import { useObjectMetadataItem } from '@/object-metadata/hooks/useObjectMetadataItem';
 import { formatFieldMetadataItemAsFieldDefinition } from '@/object-metadata/utils/formatFieldMetadataItemAsFieldDefinition';
 import { FormFieldInput } from '@/object-record/record-field/ui/components/FormFieldInput';
+import { isFieldMultiSelect } from '@/object-record/record-field/ui/types/guards/isFieldMultiSelect';
 import { isFieldRelation } from '@/object-record/record-field/ui/types/guards/isFieldRelation';
+import { isFieldSelect } from '@/object-record/record-field/ui/types/guards/isFieldSelect';
 import { type UpdateMultipleRecordsState } from '@/object-record/record-update-multiple/components/UpdateMultipleRecordsContainer';
-import { isUpdateRecordValueEmpty } from '@/object-record/record-update-multiple/utils/isUpdateRecordValueEmpty';
+import { useUpdateMultipleRecordsInitialValues } from '@/object-record/record-update-multiple/hooks/useUpdateMultipleRecordsInitialValues';
 import { shouldDisplayFormMultiEditField } from '@/object-record/record-update-multiple/utils/shouldDisplayFormMultiEditField';
 import styled from '@emotion/styled';
+import deepEqual from 'deep-equal';
 import { Section } from 'twenty-ui/layout';
 
 const StyledSection = styled(Section)`
@@ -20,11 +23,13 @@ export type UpdateMultipleRecordsFormProps = {
   objectNameSingular: string;
   disabled?: boolean;
   values: UpdateMultipleRecordsState;
+  contextStoreInstanceId: string;
   onChange: (fieldName: string, value: any) => void;
 };
 
 export const UpdateMultipleRecordsForm = ({
   objectNameSingular,
+  contextStoreInstanceId,
   disabled = false,
   values,
   onChange,
@@ -32,6 +37,13 @@ export const UpdateMultipleRecordsForm = ({
   const { objectMetadataItem } = useObjectMetadataItem({
     objectNameSingular,
   });
+
+  const {initialValues, loading} = useUpdateMultipleRecordsInitialValues({
+    objectNameSingular,
+    contextStoreInstanceId
+  })
+
+  if(loading) return null
 
   const fields = objectMetadataItem.fields.filter(
     shouldDisplayFormMultiEditField,
@@ -41,14 +53,43 @@ export const UpdateMultipleRecordsForm = ({
     .sort((fieldMetadataItemA, fieldMetadataItemB) =>
       fieldMetadataItemA.name.localeCompare(fieldMetadataItemB.name),
     )
-    .map((fieldMetadataItem) =>
-      formatFieldMetadataItemAsFieldDefinition({
+    .map((fieldMetadataItem) => {
+      const fieldDefinition = formatFieldMetadataItemAsFieldDefinition({
         field: fieldMetadataItem,
         objectMetadataItem,
         showLabel: true,
         labelWidth: 90,
-      }),
-    );
+      });
+
+      const isSelect =
+        isFieldSelect(fieldDefinition) || isFieldMultiSelect(fieldDefinition);
+
+      const fieldName = fieldDefinition.metadata.fieldName;
+      const initialValue = initialValues[fieldName];
+
+      if (isSelect && initialValue === 'Mixed') {
+        const options = (fieldDefinition.metadata as any).options ?? [];
+
+        return {
+          ...fieldDefinition,
+          metadata: {
+            ...fieldDefinition.metadata,
+            options: [
+              ...options,
+              {
+                id: 'Mixed',
+                label: 'Mixed',
+                value: 'Mixed',
+                color: 'gray',
+                position: 0,
+              },
+            ],
+          },
+        };
+      }
+
+      return fieldDefinition;
+    });
 
   return (
     <StyledSection>
@@ -59,10 +100,11 @@ export const UpdateMultipleRecordsForm = ({
           ? `${fieldName}Id`
           : fieldName;
 
-        const value = values[fieldNameOrRelationIdName];
+        const initialValue = initialValues[fieldNameOrRelationIdName];
+        const value = values[fieldNameOrRelationIdName] ?? initialValue;
 
         const handleValueChange = (newValue: any) => {
-          if (isUpdateRecordValueEmpty(newValue)) {
+          if (deepEqual(newValue, initialValue)) {
             onChange(fieldNameOrRelationIdName, undefined);
           } else {
             onChange(fieldNameOrRelationIdName, newValue);

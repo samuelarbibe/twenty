@@ -1,11 +1,10 @@
 import { useCommandMenu } from '@/command-menu/hooks/useCommandMenu';
-import styled from '@emotion/styled';
-import { useState } from 'react';
-
 import { UpdateMultipleRecordsFooter } from '@/object-record/record-update-multiple/components/UpdateMultipleRecordsFooter';
 import { UpdateMultipleRecordsForm } from '@/object-record/record-update-multiple/components/UpdateMultipleRecordsForm';
 import { ShowPageContainer } from '@/ui/layout/page/components/ShowPageContainer';
 import { RightDrawerProvider } from '@/ui/layout/right-drawer/contexts/RightDrawerContext';
+import styled from '@emotion/styled';
+import { useState } from 'react';
 import { useUpdateMultipleRecordsActions } from '../hooks/useUpdateMultipleRecordsActions';
 const StyledShowPageRightContainer = styled.div`
   display: flex;
@@ -72,10 +71,11 @@ export const UpdateMultipleRecordsContainer = ({
         <StyledShowPageRightContainer>
           <StyledContentContainer>
             <UpdateMultipleRecordsForm
+              objectNameSingular={objectNameSingular}
+              contextStoreInstanceId={contextStoreInstanceId}
               disabled={isUpdating}
               values={fieldUpdates}
               onChange={handleFieldChange}
-              objectNameSingular={objectNameSingular}
             />
           </StyledContentContainer>
           <UpdateMultipleRecordsFooter

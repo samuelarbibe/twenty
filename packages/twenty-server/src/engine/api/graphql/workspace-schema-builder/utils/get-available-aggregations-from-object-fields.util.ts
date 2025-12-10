@@ -24,11 +24,7 @@ export const getAvailableAggregationsFromObjectFields = (
 ): Record<string, AggregationField> => {
   return fields.reduce<Record<string, AggregationField>>(
     (acc, field) => {
-      if (field.type === FieldMetadataType.RELATION) {
-        return acc;
-      }
-
-      const fromSubFields = getSubfieldsForAggregateOperation(field.type);
+      const fromSubFields = getSubfieldsForAggregateOperation(field);
 
       acc[`countUniqueValues${capitalize(field.name)}`] = {
         type: GraphQLInt,
@@ -150,7 +146,7 @@ export const getAvailableAggregationsFromObjectFields = (
             type: GraphQLFloat,
             description: `Minimum amount contained in the field ${field.name}`,
             fromField: field.name,
-            fromSubFields: getSubfieldsForAggregateOperation(field.type),
+            fromSubFields: getSubfieldsForAggregateOperation(field),
             subFieldForNumericOperation: 'amountMicros',
             fromFieldType: field.type,
             aggregateOperation: AggregateOperations.MIN,
@@ -160,7 +156,7 @@ export const getAvailableAggregationsFromObjectFields = (
             type: GraphQLFloat,
             description: `Maximal amount contained in the field ${field.name}`,
             fromField: field.name,
-            fromSubFields: getSubfieldsForAggregateOperation(field.type),
+            fromSubFields: getSubfieldsForAggregateOperation(field),
             fromFieldType: field.type,
             aggregateOperation: AggregateOperations.MAX,
           };
@@ -169,7 +165,7 @@ export const getAvailableAggregationsFromObjectFields = (
             type: GraphQLFloat,
             description: `Sum of amounts contained in the field ${field.name}`,
             fromField: field.name,
-            fromSubFields: getSubfieldsForAggregateOperation(field.type),
+            fromSubFields: getSubfieldsForAggregateOperation(field),
             fromFieldType: field.type,
             aggregateOperation: AggregateOperations.SUM,
           };
@@ -178,7 +174,7 @@ export const getAvailableAggregationsFromObjectFields = (
             type: GraphQLFloat,
             description: `Average amount contained in the field ${field.name}`,
             fromField: field.name,
-            fromSubFields: getSubfieldsForAggregateOperation(field.type),
+            fromSubFields: getSubfieldsForAggregateOperation(field),
             fromFieldType: field.type,
             aggregateOperation: AggregateOperations.AVG,
           };

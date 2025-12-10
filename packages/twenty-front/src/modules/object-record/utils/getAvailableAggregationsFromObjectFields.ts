@@ -1,4 +1,6 @@
 import { type FieldMetadataItem } from '@/object-metadata/types/FieldMetadataItem';
+import { isFieldRelation } from '@/object-record/record-field/ui/types/guards/isFieldRelation';
+import { isFieldRelationManyToOne } from '@/object-record/record-field/ui/types/guards/isFieldRelationManyToOne';
 import { AggregateOperations } from '@/object-record/record-table/constants/AggregateOperations';
 import { DateAggregateOperations } from '@/object-record/record-table/constants/DateAggregateOperations';
 import { type ExtendedAggregateOperations } from '@/object-record/record-table/types/ExtendedAggregateOperations';
@@ -23,21 +25,16 @@ export const getAvailableAggregationsFromObjectFields = (
         return acc;
       }
 
-      if (field.type === FieldMetadataType.RELATION) {
+      if (!isFieldRelation(field) || isFieldRelationManyToOne(field)) {
         acc[field.name] = {
+          [AggregateOperations.COUNT_UNIQUE_VALUES]: `countUniqueValues${capitalize(field.name)}`,
+          [AggregateOperations.COUNT_EMPTY]: `countEmpty${capitalize(field.name)}`,
+          [AggregateOperations.COUNT_NOT_EMPTY]: `countNotEmpty${capitalize(field.name)}`,
+          [AggregateOperations.PERCENTAGE_EMPTY]: `percentageEmpty${capitalize(field.name)}`,
+          [AggregateOperations.PERCENTAGE_NOT_EMPTY]: `percentageNotEmpty${capitalize(field.name)}`,
           [AggregateOperations.COUNT]: 'totalCount',
         };
-        return acc;
       }
-
-      acc[field.name] = {
-        [AggregateOperations.COUNT_UNIQUE_VALUES]: `countUniqueValues${capitalize(field.name)}`,
-        [AggregateOperations.COUNT_EMPTY]: `countEmpty${capitalize(field.name)}`,
-        [AggregateOperations.COUNT_NOT_EMPTY]: `countNotEmpty${capitalize(field.name)}`,
-        [AggregateOperations.PERCENTAGE_EMPTY]: `percentageEmpty${capitalize(field.name)}`,
-        [AggregateOperations.PERCENTAGE_NOT_EMPTY]: `percentageNotEmpty${capitalize(field.name)}`,
-        [AggregateOperations.COUNT]: 'totalCount',
-      };
 
       if (field.type === FieldMetadataType.NUMBER) {
         acc[field.name] = {

@@ -2,13 +2,19 @@ import { FieldMetadataType } from 'twenty-shared/types';
 
 import { isCompositeFieldMetadataType } from 'src/engine/metadata-modules/field-metadata/utils/is-composite-field-metadata-type.util';
 
+import { FlatFieldMetadata } from 'src/engine/metadata-modules/flat-field-metadata/types/flat-field-metadata.type';
+
 export const getSubfieldsForAggregateOperation = (
-  fieldType: FieldMetadataType,
+  field: FlatFieldMetadata,
 ): string[] | undefined => {
-  if (!isCompositeFieldMetadataType(fieldType)) {
+  if (field.type === FieldMetadataType.RELATION) {
+    return ['id'];
+  }
+
+  if (!isCompositeFieldMetadataType(field.type)) {
     return undefined;
   } else {
-    switch (fieldType) {
+    switch (field.type) {
       case FieldMetadataType.CURRENCY:
         return ['amountMicros', 'currencyCode'];
       case FieldMetadataType.FULL_NAME:
@@ -39,7 +45,7 @@ export const getSubfieldsForAggregateOperation = (
       case FieldMetadataType.RICH_TEXT_V2:
         return ['blocknote', 'markdown'];
       default:
-        throw new Error(`Unsupported composite field type: ${fieldType}`);
+        throw new Error(`Unsupported composite field type: ${field.type}`);
     }
   }
 };
